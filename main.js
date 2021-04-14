@@ -28,7 +28,9 @@ function updateTime() {
 
 
 start.addEventListener('click', function() {
+    if (intervalId !== null){ return; }
    intervalId = setInterval(function(){
+       
       time += 100;
       updateTime();
     }, 100);
