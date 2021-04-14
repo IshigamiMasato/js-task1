@@ -3,10 +3,7 @@ const start = document.getElementById('start');
 const stop = document.getElementById('stop');
 const reset = document.getElementById('reset');
 
-
-
 let time = 0;
-let intervalId = null;
 
 function updateTime() {
      
@@ -23,29 +20,24 @@ function updateTime() {
       timeElement.innerHTML = `${hStr}:${mStr}:${sStr}:${msStr}`;
     };
 
-
-
-
-
 start.addEventListener('click', function() {
-    if (intervalId !== null){ return; }
+   $("#start").prop("disabled", true);
+   $("#stop").prop("disabled", false);
+   $("#reset").prop("disabled", false);
    intervalId = setInterval(function(){
-       
       time += 100;
       updateTime();
     }, 100);
 } );
 
-
 stop.addEventListener('click', function() {
+    $("#stop").prop("disabled", true);
+    $("#start").prop("disabled", false);
     clearInterval(intervalId)
-    intervalId = null;
 });
 
-
-
-
 reset.addEventListener('click', function(){
+  $("#reset").prop("disabled", true);
   time = 0;
   updateTime()
 });
